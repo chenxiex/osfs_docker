@@ -24,9 +24,13 @@
     docker pull ghcr.io/chenxiex/osfs_docker
     docker tag ghcr.io/chenxiex/osfs_docker osfs_docker
     ```
-2. 你可以使用相应的镜像来编译课程代码了。**注意**，`buildimg` 和 `image` 等与写入镜像相关的构建目标不能直接运行。要运行这些构建目标，需要首先运行 `patch_buildimg.sh`。例如：
+2. 你可以使用相应的镜像来编译课程代码了。例如：
     ```bash
-    cd path/to/Makefile所在文件夹
+    cd /path/to/osfsxx/a
+    docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker make all
+    ```
+   **注意**，`buildimg` 和 `image` 等与写入镜像相关的构建目标不能直接运行。要运行这些构建目标，需要首先运行 `patch_buildimg.sh`。该脚本会修改 `Makefile`。例如：
+    ```bash
     docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker patch_buildimg.sh
     docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker gzip -d a.img.gz
     docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker make image
