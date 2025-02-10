@@ -28,6 +28,7 @@
     ```bash
     cd path/to/Makefile所在文件夹
     docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker patch_buildimg.sh
+    docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker gzip -d a.img.gz
     docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker make image
     ```
     你也可以在容器中开启一个 `shell`，从而直接在命令行中执行你想要的命令。
