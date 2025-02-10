@@ -5,7 +5,7 @@
 - `gcc`, `make`, `nasm`, `bc`: 基本的编译工具。这些编译工具都已经过优化以确保可以直接用来编译课程代码。
     <details>
     <summary>编译选项</summary>
-    为了保证成功编译课程代码，默认设置了部分编译选项。查阅 `Dockerfile` 以了解更多。
+    为了保证成功编译课程代码，默认设置了部分编译选项。查阅 Dockerfile 以了解更多。
     </details>
 - `mtools`: 用于替代 `mount` 来写入镜像文件。必须配合 `patch_buildimg.sh` 使用。
 - `bear`: 用于生成 `compile_commands.json`。如果你使用 `clangd` 或者 `vscode cpptools intellisense`，这可能会很有用。
