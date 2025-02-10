@@ -18,8 +18,12 @@
     ```bash
     docker build -t osfs_docker .
     ```
-2. 如果希望在 Docker 环境内执行 `buildimg` 构建目标，你需要将 `patch_buildimg.sh` 移动至 `Makefile` 同级目录下，然后执行 `patch_buildimg.sh`。原 `Makefile` 中的 `buildimg` 任务无法在 Docker 环境中执行。如果你没有安装 `bash`，你可以在 Docker 容器中执行该脚本，参考下一条。
-3. 你可以使用相应的镜像来编译课程代码了。例如，以下代码创建一个一次性容器，并将当前工作目录挂载到容器内，然后执行 `make` 命令。
+    你也可以直接拉取预构建的镜像：
+    ```bash
+    docker pull ghcr.io/chenxiex/osfs_docker
+    ```
+3. 如果希望在 Docker 环境内执行 `buildimg` 构建目标，你需要将 `patch_buildimg.sh` 移动至 `Makefile` 同级目录下，然后执行 `patch_buildimg.sh`。原 `Makefile` 中的 `buildimg` 任务无法在 Docker 环境中执行。如果你没有安装 `bash`，你可以在 Docker 容器中执行该脚本，参考下一条。
+4. 你可以使用相应的镜像来编译课程代码了。例如，以下代码创建一个一次性容器，并将当前工作目录挂载到容器内，然后执行 `make` 命令。
     ```bash
     docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker make
     ```
