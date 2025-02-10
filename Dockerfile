@@ -9,3 +9,7 @@ RUN echo '#!/bin/bash\n/usr/bin/gcc -fno-stack-protector -m32 "$@"' > /usr/local
 
 # 为ld添加编译选项
 RUN echo '#!/bin/bash\n/usr/bin/ld -m elf_i386 "$@"' > /usr/local/bin/ld && chmod +x /usr/local/bin/ld
+
+# 添加patch_buildimg.sh
+COPY ./patch_buildimg.sh /usr/local/bin/patch_buildimg.sh
+RUN chmod +x /usr/local/bin/patch_buildimg.sh

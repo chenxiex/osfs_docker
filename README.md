@@ -12,7 +12,7 @@
 - `git`
 
 本镜像不包含以下工具：
-- `bochs`: 我拼尽全力也无法让 `bochs` 在 Docker 容器里跑起来。如果有任何人知道该怎么做，欢迎提出 PR。
+- `bochs`: 我拼尽全力也无法让 `bochs` 在 Docker 容器里跑起来。如果有人知道该怎么做，欢迎提出 PR。幸运的是，你可以直接在宿主机上安装最新的 bochs，它可以正常运行课程代码。
 
 ## 使用
 1. 克隆本仓库，使用本仓库中的 `Dockerfile` 构建镜像。例如，
@@ -24,10 +24,11 @@
     docker pull ghcr.io/chenxiex/osfs_docker
     docker tag ghcr.io/chenxiex/osfs_docker osfs_docker
     ```
-3. 如果希望在 Docker 环境内执行 `buildimg` 构建目标，你需要将 `patch_buildimg.sh` 移动至 `Makefile` 同级目录下，然后执行 `patch_buildimg.sh`。原 `Makefile` 中的 `buildimg` 任务无法在 Docker 环境中执行。如果你没有安装 `bash`，你可以在 Docker 容器中执行该脚本，参考下一条。
-4. 你可以使用相应的镜像来编译课程代码了。例如，以下代码创建一个一次性容器，并将当前工作目录挂载到容器内，然后执行 `make` 命令。
+2. 你可以使用相应的镜像来编译课程代码了。**注意**，`buildimg` 和 `image` 等与写入镜像相关的构建目标不能直接运行。要运行这些构建目标，需要首先运行 `patch_buildimg.sh`。例如：
     ```bash
-    docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker make
+    cd path/to/Makefile所在文件夹
+    docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker patch_buildimg.sh
+    docker run --rm -v "$PWD":"$PWD" -w "$PWD" osfs_docker make image
     ```
     你也可以在容器中开启一个 `shell`，从而直接在命令行中执行你想要的命令。
     ```bash
