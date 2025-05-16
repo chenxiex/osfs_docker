@@ -10,10 +10,12 @@ on:
     branches: [ "main" ]
     # Publish semver tags as releases.
     paths:
+      - "**"
       - "!README.md"
   pull_request:
     branches: [ "main" ]
     paths:
+      - "**"
       - "!README.md"
 
 env:
