@@ -2,9 +2,9 @@ FROM ubuntu:16.04
 
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y gcc-multilib make nasm bear bc mtools git libvncserver-dev libgcrypt-dev build-essential curl libgtk2.0-dev
+    apt-get install -y gcc-multilib make nasm bear bc mtools git libvncserver-dev libgcrypt-dev build-essential curl libgtk2.0-dev bochs
 
-RUN cd /tmp &&  curl -L# https://sourceforge.net/projects/bochs/files/bochs/2.6.11/bochs-2.6.11.tar.gz | tar xz --strip-components=1
+RUN cd /tmp &&  curl -L# https://sourceforge.net/projects/bochs/files/bochs/2.8/bochs-2.8.tar.gz | tar xz --strip-components=1
 RUN cd /tmp && ./configure --with-vncsrv --enable-debugger CXXFLAGS="-fpermissive" && make && make install
 
 # 为gcc添加编译选项
