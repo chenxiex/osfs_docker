@@ -16,6 +16,10 @@ RUN echo '#!/bin/bash\n/usr/bin/ld -m elf_i386 "$@"' > /usr/local/bin/ld && chmo
 # 添加patch_buildimg.sh
 COPY ./patch_buildimg.sh /usr/local/bin/patch_buildimg.sh
 RUN chmod +x /usr/local/bin/patch_buildimg.sh
+COPY ./patch_bochsrc.sh /usr/local/bin/patch_bochsrc.sh
+RUN chmod +x /usr/local/bin/patch_bochsrc.sh
+COPY ./patch_all.sh /usr/local/bin/patch_all.sh
+RUN chmod +x /usr/local/bin/patch_all.sh
 RUN apt-get autoremove -y build-essential curl
 RUN rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 EXPOSE 5900
