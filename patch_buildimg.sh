@@ -1,6 +1,10 @@
 #!/bin/bash
 
 makefile_path="Makefile"
+makefile_bak_path="Makefile.bak"
+
+# 备份Makefile
+cp "$makefile_path" "$makefile_bak_path"
 
 img_script_content=$(cat <<'EOF'
 	dd if=boot/boot.bin of=a.img bs=512 count=1 conv=notrunc

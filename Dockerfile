@@ -20,6 +20,8 @@ COPY ./patch_bochsrc.sh /usr/local/bin/patch_bochsrc.sh
 RUN chmod +x /usr/local/bin/patch_bochsrc.sh
 COPY ./patch_all.sh /usr/local/bin/patch_all.sh
 RUN chmod +x /usr/local/bin/patch_all.sh
+COPY ./revert_all.sh /usr/local/bin/revert_all.sh
+RUN chmod +x /usr/local/bin/revert_all.sh
 RUN apt-get autoremove -y build-essential curl
 RUN rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 EXPOSE 5900
