@@ -36,3 +36,6 @@
 2. `revert_all.sh`: 用于一次性撤销所有修改。
 3. `patch_buildimg.sh`: 该脚本修改 `Makefile` 中有关镜像构建的目标，使用 `mtools` 替换原本的 `mount` 命令。同时需要注意，`osfs` 项目假设存在空的 `a.img` 镜像用于写入。在课程的开头，你应该已经学过如何创建这个空镜像。你还可以通过解压项目附带的 `a.img.gz` 来获得这个镜像。
 4. `patch_bochsrc.sh`: 该脚本修改 `bochsrc` 文件，注释 `keyboard_mapping:` 行。该行与我们使用的 `bochs` 版本不兼容。
+
+## 致谢
+感谢 @Crescentm 贡献了 bochs 支持。
