@@ -38,4 +38,4 @@
 4. `patch_bochsrc.sh`: 该脚本修改 `bochsrc` 文件，注释 `keyboard_mapping:` 行。该行与我们使用的 `bochs` 版本不兼容。
 
 ## 致谢
-感谢 @Crescentm 贡献了 bochs 支持。
+感谢 [@Crescentm](https://github.com/Crescentm) 贡献了 bochs 支持。
